@@ -47,6 +47,15 @@ export class ProjectService {
     );
   }
 
+  delete(id: number): Observable<Project>{
+    return this.httpClient.delete<Project>(`http://localhost:3000/projects/${id}`)
+    .pipe(
+      tap((data) => this.logService.log(`delete Eseguito ${data}`)),
+      retry(3),
+      catchError(this.handleError)
+    )
+  }
+
   private handleError(error: HttpErrorResponse){
     if(error.error instanceof ErrorEvent){
       console.error('An error occurred:', error.error.message);

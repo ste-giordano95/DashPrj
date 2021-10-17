@@ -32,6 +32,15 @@ export class ProjectDashboardComponent implements OnInit {
     this.router.navigate(['/projects', 'detail', project.id]);
   }
 
+  deleteProject(project: Project){
+     this.projectService.delete(project.id).subscribe(data => this.projects$ = this.projectService.getAll());
+     
+  }
+
+  // public deleteUser(userId: string) {
+  //   this.users = this.users.filter(user => user.id !== userId);
+  // }
+
   submitProjectForm(project: Project) {
     this.projectService.add(project).subscribe(data => this.projects$ = this.projectService.getAll())
   }

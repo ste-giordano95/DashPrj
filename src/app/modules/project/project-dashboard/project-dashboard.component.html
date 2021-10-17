@@ -2,7 +2,7 @@
 </ngprj-section-header>
 
 <ng-container *ngIf="projects$ | async as projects">
-    <ngprj-project-list [projects]="projects" (selected)="selectProject($event)"></ngprj-project-list>
+    <ngprj-project-list [projects]="projects" (selected)="selectProject($event)" (delete)=" deleteProject($event)"></ngprj-project-list>
 </ng-container>
 
 <hr>

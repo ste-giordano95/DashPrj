@@ -7,7 +7,8 @@
                                         {{ project.name }}
                                     </h5>
                                 <p class="card-text">{{ project.description }}</p>
-                <button class="btn btn-primary btn-sm " (click)="select(project)">Vai al Progetto</button>
+                <button class="btn btn-primary btn-sm" (click)="select(project)">Vai al Progetto</button>
+                <button class="btn btn-danger btn-sm " (click)="deletePrj(project)">Elimina Progetto</button>
             </ng-container>
             <ng-container data-footer>
                 <small class="text-muted">
