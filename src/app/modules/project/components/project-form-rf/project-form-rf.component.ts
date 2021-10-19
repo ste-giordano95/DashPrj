@@ -14,11 +14,11 @@ export class ProjectFormRfComponent implements OnInit {
   projectForm = new FormGroup({
     end: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
-    tasks: new FormArray([])
+    task: new FormArray([])
   })
 
-  get tasks(): FormArray {
-    return this.projectForm.get('tasks') as FormArray
+  get task(): FormArray {
+    return this.projectForm.get('task') as FormArray
   }
 
   constructor() { }
@@ -39,11 +39,11 @@ export class ProjectFormRfComponent implements OnInit {
   }
 
   addTask() {
-    this.tasks.push(this.newTask());
+    this.task.push(this.newTask());
   }
 
   deleteTask(index: number) {
-    this.tasks.removeAt(index);
+    this.task.removeAt(index);
   }
 }
 

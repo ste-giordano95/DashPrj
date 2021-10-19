@@ -11,7 +11,7 @@ import { ProjectService } from '../../project.service';
   styleUrls: ['./project-detail.component.css']
 })
 export class ProjectDetailComponent implements OnInit {
- project$!: Observable< Project>;
+  project$!: Observable<Project>;
 
   constructor(private projectService: ProjectService, private activatedRoute: ActivatedRoute) { }
 
@@ -19,9 +19,13 @@ export class ProjectDetailComponent implements OnInit {
     // const id = this.activatedRoute.snapshot.paramMap.get('id');
     // this.projectService.get(+id!).subscribe(data => console.log(data));
     this.project$ = this.activatedRoute.paramMap.pipe(
-    switchMap((params: ParamMap) => this.projectService.get(+params.get('id')!))
+      switchMap((params: ParamMap) => this.projectService.get(+params.get('id')!))
     )
 
+  }
+
+  public updatePrj(prj: Project, id: number) {
+    this.projectService.Update(prj, id).subscribe(() => this.project$ = this.projectService.get(id));
   }
 
 }

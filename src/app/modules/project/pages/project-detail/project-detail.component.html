@@ -7,12 +7,21 @@
             <ng-container data-body>
                 <h1 class="display-5 fw-bold">{{project.name}}</h1>
                 <h2>{{ project.start | date }}</h2>
+                <h2 *ngIf="project.end" class="col-md-8 fs-4">{{project.end | date}}</h2>
             </ng-container>
             <ng-container data-footer>
                 <p class="col-md-8 fs-4">{{project.description}}</p>
+
+                <ng-container *ngIf="project.task">
+                    <h3>Task:</h3>
+                    <div *ngFor="let task of project.task">
+                        <p>-{{task.name}}</p>
+                    </div>
+                </ng-container>
+
             </ng-container>
         </ngprj-card>
     </div>
-</ng-container>
 
-<ngprj-project-form-rf></ngprj-project-form-rf>
+    <ngprj-project-form-rf [project]="project" (submitted)="updatePrj($event, project.id)"></ngprj-project-form-rf>
+</ng-container>
